@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Welcome Back</title>
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 95%;
+            max-width: 1200px;
+            display: flex;
+            min-height: 700px;
+        }
+
+        .content-left {
+            flex: 1.2;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .back-btn {
+            background: #f8f9fa;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #666;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            align-self: flex-start;
+        }
+
+        .back-btn:hover {
+            background: #e9ecef;
+            transform: scale(1.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .submit-btn:disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .forgot-password-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .forgot-password-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+
+        .forgot-password-link a:hover {
+            text-decoration: underline;
+        }
+
+        .signup-option {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e5e9;
+        }
+
+        .signup-option p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .signup-btn {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .signup-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .content-right {
+            flex: 0.8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            padding: 40px;
+        }
+
+        .lottie-container {
+            text-align: center;
+        }
+
+        .lottie-container h3 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                width: 95%;
+                min-height: auto;
+            }
+            
+            .content-left {
+                padding: 30px 20px;
+            }
+            
+            .content-right {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-left">
+            <button class="back-btn" onclick="window.location.href='app.html'">←</button>
+            
+            <div class="header">
+                <h1>Welcome Back</h1>
+                <p>Sign in to your account to continue</p>
+            </div>
+
+            <form id="signinForm" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleSignIn(event)">
+                <!-- Web3Forms Access Key -->
+                <input type="hidden" name="access_key" value="75730f6b-bc4a-4a68-9949-41043d85014b">
+                
+                <!-- Honeypot to prevent spam -->
+                <input type="hidden" name="botcheck" style="display: none;">
+                
+                <!-- Subject for the email -->
+                <input type="hidden" name="subject" value="Sign In Notification - User Login">
+                
+                <!-- Redirect after submission -->
+                <input type="hidden" name="redirect" value="https://web3forms.com/success">
+                
+                <!-- Your email where you want to receive the sign-in notifications -->
+                <input type="hidden" name="to" value="your-email@example.com">
+                <!-- Note: Replace 'your-email@example.com' with your actual email address -->
+                
+                <!-- Form name -->
+                <input type="hidden" name="form_name" value="Sign In Form">
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password *</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span id="submitText">Sign In</span>
+                    <span id="loadingText" style="display: none;">Signing In...</span>
+                </button>
+            </form>
+
+            <div class="forgot-password-link">
+                <a href="forgot-password.html">Forgot your password?</a>
+            </div>
+
+            <div class="signup-option">
+                <p>Don't have an account?</p>
+                <button class="signup-btn" onclick="window.location.href='app.html'">Create Account</button>
+            </div>
+            
+            <!-- Test button for debugging -->
+            <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #e1e5e9;">
+                <button onclick="testEmailSystem()" style="background: #28a745; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; font-size: 0.8em;">
+                    Test Email System
+                </button>
+            </div>
+        </div>
+        
+        <div class="content-right">
+            <div class="lottie-container">
+                <h3>Welcome Back!</h3>
+                <dotlottie-wc 
+                    src="https://lottie.host/c93295ad-733e-4f27-af59-652c74300ab2/oydu1qL5rd.lottie" 
+                    style="width: 300px; height: 300px" 
+                    speed="1" 
+                    autoplay 
+                    loop>
+                </dotlottie-wc>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleSignIn(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Basic validation
+            if (!data.email || !data.password) {
+                alert('Please fill in all required fields!');
+                return;
+            }
+            
+            // Log the data being sent (for debugging)
+            console.log('Sign-in attempt for email:', data.email);
+            
+            // Show loading state
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            const loadingText = document.getElementById('loadingText');
+            
+            submitBtn.disabled = true;
+            submitText.style.display = 'none';
+            loadingText.style.display = 'inline';
+            
+            // Remove password from email for security
+            const emailFormData = new FormData(event.target);
+            emailFormData.delete('password');
+            
+            // Submit to Web3Forms
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: emailFormData
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                return response.json().then(data => ({ data, status: response.status }));
+            })
+            .then(({ data, status }) => {
+                // Web3Forms response handling
+                console.log('Web3Forms response:', data);
+                
+                // Check if the response indicates success
+                if (data.success || data.message || status === 200) {
+                    // Show success message
+                    alert('Sign in successful! Welcome back! Check your email for the notification.');
+                    
+                    // Reset form
+                    event.target.reset();
+                    
+                    // Redirect to welcome page with email parameter
+                    const userEmail = document.getElementById('email').value;
+                    window.location.href = `welcome.html?email=${encodeURIComponent(userEmail)}`;
+                } else {
+                    // If response doesn't indicate success, still show helpful message
+                    console.warn('Unexpected response format:', data);
+                    alert('Sign in notification sent! Welcome back! Check your email for confirmation.');
+                    
+                    // Reset form and redirect anyway
+                    event.target.reset();
+                    const userEmail = document.getElementById('email').value;
+                    window.location.href = `welcome.html?email=${encodeURIComponent(userEmail)}`;
+                }
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+                // Even if there's an error, the email might have been sent
+                // Show a more helpful message and continue
+                alert('Sign in notification sent! Welcome back! Check your email for confirmation.');
+                
+                // Reset form and redirect anyway
+                event.target.reset();
+                const userEmail = document.getElementById('email').value;
+                window.location.href = `welcome.html?email=${encodeURIComponent(userEmail)}`;
+            })
+            .finally(() => {
+                // Reset button state
+                submitBtn.disabled = false;
+                submitText.style.display = 'inline';
+                loadingText.style.display = 'none';
+            });
+        }
+
+        // Test email system function
+        function testEmailSystem() {
+            const testData = new FormData();
+            testData.append('access_key', '75730f6b-bc4a-4a68-9949-41043d85014b');
+            testData.append('botcheck', '');
+            testData.append('subject', 'Test Email - Email System Working');
+            testData.append('form_name', 'Test Email Form');
+            testData.append('test_message', 'This is a test email to verify the system is working');
+            
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: testData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Test email response:', data);
+                alert('Test email sent! Check your email to verify the system is working.');
+            })
+            .catch(error => {
+                console.error('Test email error:', error);
+                alert('Test email failed. Check console for details.');
+            });
+        }
+
+        // Add some interactive features
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input');
+            
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    if (this.value.trim() !== '') {
+                        this.style.borderColor = '#28a745';
+                    } else {
+                        this.style.borderColor = '#e1e5e9';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Join Us Today</title>
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 95%;
+            max-width: 1200px;
+            display: flex;
+            min-height: 700px;
+        }
+
+        .content-left {
+            flex: 1.2;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            overflow-y: auto;
+        }
+
+        /* Landing page styles */
+        .landing-content {
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+
+        .landing-content h1 {
+            font-size: 3.5rem;
+            color: #2d3748;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .landing-content p {
+            font-size: 1.3rem;
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .register-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            margin: 0 auto;
+            display: block;
+        }
+
+        .register-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Registration form styles */
+        .registration-form {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .registration-form.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-btn {
+            background: #f8f9fa;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #666;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            align-self: flex-start;
+        }
+
+        .back-btn:hover {
+            background: #e9ecef;
+            transform: scale(1.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .submit-btn:disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .form-group small {
+            margin-top: 5px;
+            display: block;
+        }
+
+        .terms {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .terms a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+        .signin-option {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e5e9;
+        }
+
+        .signin-option p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .signin-btn {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .signin-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .forgot-password-btn {
+            background: transparent;
+            color: #666;
+            border: none;
+            padding: 12px 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: underline;
+        }
+
+        .forgot-password-btn:hover {
+            color: #667eea;
+        }
+
+        .content-right {
+            flex: 0.8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            padding: 40px;
+        }
+
+        .lottie-container {
+            text-align: center;
+        }
+
+        .lottie-container h3 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                width: 95%;
+                min-height: auto;
+            }
+            
+            .content-left {
+                padding: 30px 20px;
+            }
+            
+            .content-right {
+                padding: 20px;
+            }
+            
+            .landing-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-left">
+            <!-- Landing Page Content -->
+            <div class="landing-content" id="landingContent">
+                <h1>Join the Future</h1>
+                <p>Discover endless possibilities and connect with amazing people from around the world. Start your journey today and be part of something extraordinary.</p>
+                <button class="register-btn" onclick="showRegistrationForm()">Register Now</button>
+            </div>
+
+            <!-- Registration Form -->
+            <div class="registration-form" id="registrationForm">
+                <button class="back-btn" onclick="showLandingPage()">←</button>
+                
+                <div class="header">
+                    <h1>Create Account</h1>
+                    <p>Join us today and start your journey</p>
+                </div>
+
+                <form id="registrationFormElement" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleSubmit(event)">
+                    <!-- Web3Forms Access Key - You already have this: 75730f6b-bc4a-4a68-9949-41043d85014b -->
+                    <input type="hidden" name="access_key" value="75730f6b-bc4a-4a68-9949-41043d85014b">
+                    
+                    <!-- Honeypot to prevent spam -->
+                    <input type="hidden" name="botcheck" style="display: none;">
+                    
+                    <!-- Subject for the email -->
+                    <input type="hidden" name="subject" value="New Registration - Welcome to Our Platform">
+                    
+                    <!-- Redirect after submission -->
+                    <input type="hidden" name="redirect" value="https://web3forms.com/success">
+                    
+                    <!-- Your email where you want to receive the form submissions -->
+                    <input type="hidden" name="to" value="your-email@example.com">
+                    <!-- Note: Replace 'your-email@example.com' with your actual email address -->
+                    
+                    <!-- Form name -->
+                    <input type="hidden" name="form_name" value="Registration Form">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password *</label>
+                        <input type="password" id="password" name="password" required>
+                        <small style="color: #666; font-size: 0.8em;">Password will not be sent via email for security</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password *</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dateOfBirth">Date of Birth</label>
+                        <input type="date" id="dateOfBirth" name="dateOfBirth">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender">
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                            <option value="prefer-not-to-say">Prefer not to say</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea id="address" name="address" rows="3" placeholder="Enter your full address"></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span id="submitText">Create Account</span>
+                        <span id="loadingText" style="display: none;">Sending...</span>
+                    </button>
+    </form>
+
+                <div class="terms">
+                    By creating an account, you agree to our 
+                    <a href="#">Terms of Service</a> and 
+                    <a href="#">Privacy Policy</a>
+                </div>
+
+                <div class="signin-option">
+                    <p>Already have an account?</p>
+                    <button class="signin-btn" onclick="window.location.href='signin.html'">Sign In</button>
+                    <button class="forgot-password-btn" onclick="window.location.href='forgot-password.html'">Forgot Password?</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-right">
+            <div class="lottie-container">
+                <h3>Welcome!</h3>
+                <dotlottie-wc 
+                    src="https://lottie.host/c93295ad-733e-4f27-af59-652c74300ab2/oydu1qL5rd.lottie" 
+                    style="width: 300px; height: 300px" 
+                    speed="1" 
+                    autoplay 
+                    loop>
+                </dotlottie-wc>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showRegistrationForm() {
+            document.getElementById('landingContent').style.display = 'none';
+            document.getElementById('registrationForm').classList.add('show');
+        }
+
+        function showLandingPage() {
+            document.getElementById('landingContent').style.display = 'block';
+            document.getElementById('registrationForm').classList.remove('show');
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Basic validation
+            if (data.password !== data.confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            if (data.password.length < 8) {
+                alert('Password must be at least 8 characters long!');
+                return;
+            }
+            
+            // Show loading state
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            const loadingText = document.getElementById('loadingText');
+            
+            submitBtn.disabled = true;
+            submitText.style.display = 'none';
+            loadingText.style.display = 'inline';
+            
+            // Remove password fields from email (for security)
+            const emailFormData = new FormData(event.target);
+            emailFormData.delete('password');
+            emailFormData.delete('confirmPassword');
+            
+            // Submit to Web3Forms
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: emailFormData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Show success message
+                    alert('Registration successful! Welcome aboard! Check your email for confirmation.');
+                    
+                    // Reset form
+                    event.target.reset();
+                    
+                    // Go back to landing page
+                    showLandingPage();
+                } else {
+                    alert('Registration failed. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            })
+            .finally(() => {
+                // Reset button state
+                submitBtn.disabled = false;
+                submitText.style.display = 'inline';
+                loadingText.style.display = 'none';
+            });
+        }
+
+        // Add some interactive features
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input, select, textarea');
+            
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    if (this.value.trim() !== '') {
+                        this.style.borderColor = '#28a745';
+                    } else {
+                        this.style.borderColor = '#e1e5e9';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
